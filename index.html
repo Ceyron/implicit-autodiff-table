@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Automatic Differentiation Primitive Rules</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<p class="text-light">
+  Created with ❤️ by <a href="https://www.youtube.com/@MachineLearningSimulation">Machine Learning & Simulation</a>.
+  </p>
+
+<table class="table table-dark table-striped table-hover">
+  <tr>
+    <th>Primitive</th>
+    <th>Primal</th>
+    <th>Pushforward/Jvp</th>
+    <th>Pullback/vJp</th>
+  </tr>
+  <tr>
+    <td colspan="4" class="text-center">Ordinary Differential Equations (ODEs)</td>
+  </tr>
+  <tr>
+    <!-- Neural ODEs -->
+    <td>Neural ODEs</td>
+    <td>
+      $
+        \mathbf{u} = \left\{ \text{integrate} \; \frac{d \mathbf{u}}{d t} = \mathbf{f}(\mathbf{u}, \mathbf{\theta}) \; \text{with} \; \mathbf{u}|_{t=0} = \mathbf{u}_0 \; \text{to} \; \mathbf{u}|_{t=T} \right\}
+      $
+    </td>
+    <td>
+      $
+        \begin{align}
+          \dot{\mathbf{u}}_\theta &= \left\{ \text{integrate} \; \frac{d \dot{\mathbf{u}}_\theta}{d t} = \frac{\partial \mathbf{f}}{\partial \mathbf{u}} \dot{\mathbf{u}}_{\theta} + \frac{\partial \mathbf{f}}{\partial \mathbf{\theta}} \dot{\mathbf{\theta}} \; \text{with} \; \dot{\mathbf{u}}_\theta|_{t=0} = \mathbf{0} \; \text{to} \; \dot{\mathbf{u}}_\theta|_{t=T} \right\}
+          \\
+          \dot{\mathbf{u}}_{u_0} &= \left\{ \text{integrate} \; \frac{d \dot{\mathbf{u}}_{u_0}}{d t} = \frac{\partial \mathbf{f}}{\partial \mathbf{u}} \dot{\mathbf{u}}_{u_0} \; \text{with} \; \dot{\mathbf{u}}_{u_0}|_{t=0} = \dot{\mathbf{u}}_0 \; \text{to} \; \dot{\mathbf{u}}_{u_0}|_{t=T} \right\}
+          \\
+          \dot{\mathbf{u}}_T &= \mathbf{f}(\mathbf{u}(T), \mathbf{\theta}) \cdot \dot{T}
+        \end{align}
+      $
+    </td>
+    <td>
+      $
+        \begin{align}
+          \bar{\mathbf{u}}_0 &= \bar{\mathbf{u}}_\theta \cdot \dot{\mathbf{u}}_{u_0} + \bar{\mathbf{u}}_{u_0} \cdot \dot{\mathbf{u}}_{u_0} + \bar{\mathbf{u}}_T \cdot \dot{\mathbf{u}}_{u_0}
+          \\
+          \bar{\mathbf{\theta}} &= \bar{\mathbf{u}}_\theta \cdot \dot{\mathbf{u}}_\theta
+          \\
+          \bar{T} &= \bar{\mathbf{u}}_T \cdot \dot{T}
+        \end{align}
+      $
+    </td>
+  </tr>
+</table> 
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
