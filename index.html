@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Automatic Differentiation Primitive Rules</title>
+<title>Implicit Automatic Differentiation Primitive Rules</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,12 +20,13 @@ MathJax = {
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body class="bg-dark">
-<p class="text-light">
+<body class="p-2">
+<h1 class="text-center">Implicit Autodiff Primitive Rules</h1>
+<p class="text-center">
   Created with ❤️ by <a href="https://www.youtube.com/@MachineLearningSimulation">Machine Learning & Simulation</a>.
   </p>
 
-<table class="table table-dark table-striped table-hover">
+<table class="table table-striped table-hover">
   <tr>
     <th>Primitive</th>
     <th>Primal</th>
@@ -33,7 +34,96 @@ MathJax = {
     <th>Pullback/vJp</th>
   </tr>
   <tr>
-    <td colspan="4" class="text-center">Ordinary Differential Equations (ODEs)</td>
+    <td><b>Discrete Problems</b></td>
+    <td colspan="3"></td>
+  </tr>
+  <tr>
+    <!-- Scalar Root-Finding-->
+    <td>Scalar Root-Finding</td>
+    <td>
+      $
+        x = \left\{ \text{solve} \; g(x, \theta) \; \text{for} \; x\right\}
+      $
+    </td>
+    <td>
+      $
+        \dot{x} = - \frac{
+            \frac{\partial g}{\partial \theta}
+        }{
+            \frac{\partial g}{\partial x}
+        }
+        \dot{\theta}
+      $
+    </td>
+    <td>
+      $
+        \bar{\theta} = - \bar{x} \frac{
+            \frac{\partial g}{\partial \theta}
+        }{
+            \frac{\partial g}{\partial x}
+        }
+      $
+    </td>
+  </tr>
+  <tr>
+    <!-- Linear System Solving-->
+    <td>Linear System Solving</td>
+    <td>
+      $
+        \mathbf{x} = \left\{ \text{solve} \; \mathbf{A} \mathbf{x} = \mathbf{b} \; \text{for} \; \mathbf{x} \right\}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{d} &= \dot{\mathbf{b}} - \dot{\mathbf{A}} \mathbf{x}
+        \\
+        \dot{\mathbf{x}} &= \left\{ \text{solve} \; \mathbf{A} \dot{\mathbf{x}} = \mathbf{d} \; \text{for} \; \dot{\mathbf{x}} \right\}
+      \end{align}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{\lambda} &= \left\{ \text{solve} \; \mathbf{A}^T \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
+        \\
+        \bar{\mathbf{b}} &= \mathbf{\lambda}
+        \\
+        \bar{\mathbf{A}} &= - \mathbf{\lambda} \mathbf{x}^T
+      \end{align}
+      $
+    </td>
+  </tr>
+  <tr>
+    <!-- Nonlinear System Solving-->
+    <td>Nonlinear System Solving</td>
+    <td>
+      $
+        \mathbf{x} = \left\{ \text{solve} \; \mathbf{g}(\mathbf{x}, \theta) = \mathbf{0} \; \text{for} \; \mathbf{x} \right\}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{d} &= - \frac{\partial \mathbf{g}}{\partial \mathbf{\theta}} \dot{\mathbf{\theta}}
+        \\
+        \dot{\mathbf{x}} &= \left\{ \text{solve} \; \frac{\partial \mathbf{g}}{\partial \mathbf{x}} \dot{\mathbf{x}} = \mathbf{d} \; \text{for} \; \dot{\mathbf{x}} \right\}
+      \end{align}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{\lambda} &= \left\{ \text{solve} \; \left( \frac{\partial \mathbf{g}}{\partial \mathbf{x}}\right)^T \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
+        \\
+        \bar{\mathbf{\theta}} &= - \left( \frac{\partial \mathbf{g}}{\partial \mathbf{\theta}} \right)^T \mathbf{\lambda}
+      \end{align}
+      $
+    </td>
+  </tr>
+  <tr>
+    <td><b>ODE Problems</b></td>
+    <td colspan="3"></td>
   </tr>
   <tr>
     <!-- Neural ODEs -->
