@@ -185,13 +185,11 @@ MathJax = {
     <td>
       $
       \begin{align}
-        \mathbf{\lambda}(t) &= \left\{ \text{integrate} \; \frac{d \mathbf{\lambda}}{d t} = - \left( \frac{\partial \mathbf{f}}{\partial \mathbf{u}} \right)^T \mathbf{\lambda} \; \text{with} \; \mathbf{\lambda}|_{t=T} = \bar{\mathbf{u}}|_{t=T} \; \text{over} \; t \in (T, 0) \right\}
+        \mathbf{\lambda}(t) &= \left\{ \text{integrate} \; \frac{d \mathbf{\lambda}}{d t} = - \left( \frac{\partial \mathbf{f}}{\partial \mathbf{u}} \right)^T \mathbf{\lambda} - \bar{\mathbf{u}}(t) \; \text{with} \; \mathbf{\lambda}|_{t=T} = \mathbf{0} \; \text{over} \; t \in (T, 0) \right\}
         \\
         \bar{\mathbf{\theta}} &= \langle \mathbf{\lambda}, \frac{\partial \mathbf{f}}{\partial \mathbf{\theta}} \rangle
         \\
         \bar{\mathbf{u}}_0 &= \mathbf{\lambda} |_{t=0}
-        \\
-        \bar{T} &= \bar{\mathbf{u}}(T)^T  \mathbf{f}(\mathbf{u}(T), \mathbf{\theta})
       \end{align}
       $
     </td>
