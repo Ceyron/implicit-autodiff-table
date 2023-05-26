@@ -21,8 +21,8 @@ learning, like TensorFlow, PyTorch, JAX, etc. See
 these explicit rules.
 
 Going beyond classical feed-forard deep learning architectures, one commonly
-finds that problems are expressed as the solution to implicit problems. For
-example, many simulations in scientific computing reduce to the solutions of
+finds that problems are expressed as the solution to implicit relations. For
+example, many simulations in scientific computing boil down to the solutions of
 linear systems of equations. Similarly like we can break up a matrix-vector
 multiplication into individual scalar operations, we could break down the linear
 solve into its algorithmic components. This comes with several disadvantages
@@ -40,7 +40,7 @@ then the forward propagation would first compute the auxiliary vector
 
 $$d = \dot{b} - A \dot{x}$$
 
-and then solves the tangent linear system for $\dot{x}$
+and then solve the tangent linear system for $\dot{x}$
 
 $$A \dot{x} = d.$$
 
@@ -66,4 +66,9 @@ Indeed, the history of automatic differentiation was greatly influenced by them 
 
 ### 🏦 References
 
-todo
+todo: have this more scientifical and extend
+
+* A classical write-up is by [Andrew Bradley](https://cs.stanford.edu/~ambrad/adjoint_tutorial.pdf)
+* I also liked this [first](https://math.mit.edu/~stevenj/18.336/adjoint.pdf) and [second](https://math.mit.edu/~stevenj/18.336/recurrence2.pdf) pdf by Prof. Steven Johnson.
+* Rules for Ordinary Differential Equations:
+    * I liked the derivations in [Sengupta et al.](https://www.sciencedirect.com/science/article/pii/S1053811914003097).
