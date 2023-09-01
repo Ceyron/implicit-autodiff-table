@@ -141,7 +141,7 @@ MathJax = {
     <td>
       $
       \begin{align}
-        \mathbf{d} &= \frac{\partial \mathbf{\phi}}{\partial \mathbf{\theta}} \dot{\mathbf{\theta}}
+        \mathbf{d} &= - \frac{\partial \mathbf{\phi}}{\partial \mathbf{\theta}} \dot{\mathbf{\theta}}
         \\
         \dot{\mathbf{x}} &= \left\{ \text{solve} \; \left(\mathbf{I} - \frac{\partial \mathbf{\phi}}{\partial \mathbf{x}}\right) \dot{\mathbf{x}} = \mathbf{d} \; \text{for} \; \dot{\mathbf{x}} \right\}
       \end{align}
@@ -150,9 +150,9 @@ MathJax = {
     <td>
       $
       \begin{align}
-        \mathbf{\lambda} &= \left\{ \text{solve} \; \left( \mathbf{I} - \left( \frac{\partial \mathbf{\phi}}{\partial \mathbf{x}}\right)^T \right) \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
+        \mathbf{\lambda} &= \left\{ \text{solve} \; \left( \mathbf{I} - \frac{\partial \mathbf{\phi}}{\partial \mathbf{x}} \right)^T \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
         \\
-        \bar{\mathbf{\theta}} &= \left( \frac{\partial \mathbf{\phi}}{\partial \mathbf{\theta}} \right)^T \mathbf{\lambda}
+        \bar{\mathbf{\theta}} &= - \left( \frac{\partial \mathbf{\phi}}{\partial \mathbf{\theta}} \right)^T \mathbf{\lambda}
       \end{align}
       $
     </td>
