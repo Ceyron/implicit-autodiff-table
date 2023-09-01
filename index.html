@@ -135,7 +135,7 @@ MathJax = {
     <td>Fixed-Point Iteration</td>
     <td>
       $
-        \mathbf{x} = \left\{ \text{iterate} \; \mathbf{x} = \mathbf{\phi}(\mathbf{x}, \theta) \; \text{until convergence} \right\}
+        \mathbf{x} = \left\{ \text{iterate} \; \mathbf{x} \leftarrow \mathbf{\phi}(\mathbf{x}, \theta) \; \text{until convergence} \right\}
       $
     </td>
     <td>
@@ -153,6 +153,33 @@ MathJax = {
         \mathbf{\lambda} &= \left\{ \text{solve} \; \left( \mathbf{I} - \frac{\partial \mathbf{\phi}}{\partial \mathbf{x}} \right)^T \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
         \\
         \bar{\mathbf{\theta}} &= - \left( \frac{\partial \mathbf{\phi}}{\partial \mathbf{\theta}} \right)^T \mathbf{\lambda}
+      \end{align}
+      $
+    </td>
+  </tr>
+  <tr>
+    <!-- Picard-Iteration -->
+    <td>Picard-Iteration</td>
+    <td>
+      $
+        \mathbf{x} = \left\{ \text{iterate} \; \mathbf{x} \leftarrow \mathbf{A}(x)^{-1}\mathbf{x} - \mathbf{b}(\mathbf{\theta}) \; \text{until convergence} \right\}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{d} &= \frac{\partial \mathbf{b}}{\partial \mathbf{\theta}} \dot{\mathbf{\theta}}
+        \\
+        \dot{\mathbf{x}} &= \left\{ \text{solve} \; \left(\frac{\partial \mathbf{A(\mathbf{x})\mathbf{x}}}{\partial \mathbf{x}}\right) \dot{\mathbf{x}} = \mathbf{d} \; \text{for} \; \dot{\mathbf{x}} \right\}
+      \end{align}
+      $
+    </td>
+    <td>
+      $
+      \begin{align}
+        \mathbf{\lambda} &= \left\{ \text{solve} \; \left( \frac{\partial \mathbf{A(\mathbf{x})\mathbf{x}}}{\partial \mathbf{x}} \right)^T \mathbf{\lambda} = \bar{\mathbf{x}} \; \text{for} \; \mathbf{\lambda} \right\}
+        \\
+        \bar{\mathbf{\theta}} &= \left( \frac{\partial \mathbf{b}}{\partial \mathbf{\theta}} \right)^T \mathbf{\lambda}
       \end{align}
       $
     </td>
